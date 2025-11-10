@@ -1,0 +1,160 @@
+/* ========== CSS Variables ========== */
+:root{
+  --bg: #0f0f12;
+  --panel: #15161a;
+  --panel-alt: #111217;
+  --text: #eaeaf0;
+  --muted: #b8b9c4;
+  --brand: #ffd166;      /* warm accent */
+  --brand-2: #6ee7b7;    /* soft green */
+  --link: #7ab9ff;
+  --card: #1a1b21;
+  --border: #23242b;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+/* ========== Base ========== */
+*{ box-sizing: border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background: radial-gradient(1200px 800px at 20% -10%, rgba(255,209,102,.15), transparent 60%),
+              radial-gradient(1000px 700px at 120% 10%, rgba(110,231,183,.12), transparent 60%),
+              var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+}
+
+img{ max-width:100%; display:block; border-radius: 12px; }
+a{ color: var(--link); text-decoration: none; }
+a:hover{ text-decoration: underline; }
+
+.container{
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+
+.section{
+  padding: 72px 0;
+  background: var(--panel);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.section.alt{
+  background: var(--panel-alt);
+}
+
+h1,h2,h3{
+  line-height: 1.2;
+  margin: 0 0 .6em;
+}
+h1{ font-size: clamp(2rem, 4.5vw, 3rem); }
+h2{ font-size: clamp(1.5rem, 3.5vw, 2.1rem); }
+h3{ font-size: clamp(1.1rem, 2.6vw, 1.35rem); }
+
+p{ margin: 0 0 1em; color: var(--text); }
+.muted{ color: var(--muted); }
+
+/* ========== Header / Nav ========== */
+.site-header{
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(17,18,23,.75);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner{
+  display:flex; align-items:center; justify-content: space-between;
+  padding: 14px 0;
+}
+.brand{
+  display:flex; align-items:center; gap:10px; font-weight: 800;
+}
+.brand-mark{ font-size: 1.35rem; }
+.brand-text{
+  letter-spacing:.3px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  -webkit-background-clip: text; background-clip:text; color: transparent;
+}
+
+.site-nav a{
+  margin-left: 18px; font-weight: 600; color: var(--text);
+  padding: 6px 10px; border-radius: 8px;
+}
+.site-nav a:hover{
+  background: rgba(255,255,255,.06);
+}
+
+/* ========== Hero ========== */
+.hero{
+  padding: 64px 0 36px;
+  background: linear-gradient(180deg, rgba(255,209,102,.10), transparent 70%);
+}
+.hero-inner{
+  display:grid; grid-template-columns: 1.2fr .9fr; gap: 28px; align-items: center;
+}
+.hero .tagline{ color: var(--muted); max-width: 55ch; }
+.cta{
+  display:inline-block; margin-top: 14px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  color:#101115; font-weight: 800; padding: 12px 18px; border-radius: 999px;
+  box-shadow: var(--shadow);
+}
+.cta:hover{ filter: brightness(1.05); text-decoration: none; }
+
+.hero-figure figcaption{
+  margin-top: 8px; color: var(--muted); font-size: .9rem;
+}
+
+/* ========== Grids & Cards ========== */
+.grid{ display:grid; gap: 22px; }
+.grid.two{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+.grid.three{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+@media (max-width: 900px){
+  .hero-inner{ grid-template-columns: 1fr; }
+  .grid.two, .grid.three{ grid-template-columns: 1fr; }
+}
+
+.card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+.card.note h3{ color: var(--brand); }
+.card.tip h3{ color: var(--brand-2); }
+
+.feature{
+  background: linear-gradient(180deg, rgba(255,255,255,.02), transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+/* ========== Lists ========== */
+ul.bullet{
+  padding-left: 1.1rem;
+}
+ul.bullet li{ margin-bottom: .4rem; }
+
+/* ========== Gallery ========== */
+.gallery{
+  grid-template-columns: repeat(3, minmax(0,1fr));
+}
+.gallery figure{ margin:0; }
+.gallery img{ aspect-ratio: 4/3; object-fit: cover; }
+
+/* ========== Layout helpers ========== */
+.narrow{ width: min(760px, 92vw); margin: 0 auto; }
+.center{ text-align: center; }
+
+/* ========== Footer ========== */
+.site-footer{
+  background: #0d0e12;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+.footer-inner{ padding: 24px 0; text-align:center; }
+.fine-print{ font-size: .9rem; color: #8f90a0; }
